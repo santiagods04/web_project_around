@@ -16,3 +16,15 @@ body{
 h1,h2,h3,p{
   margin: 0;
 }
+
+@media screen and (max-width: 900px) {
+  .page {
+    max-width: 880px;
+    min-width: 320px;
+    margin: auto;
+    padding: 0 20px;
+    color: #ffffff;
+    font-family: "Inter", sans-serif;
+  }
+
+}
