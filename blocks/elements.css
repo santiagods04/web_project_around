@@ -49,16 +49,16 @@
 }
 
 .elements__icon-like{
-  border: 0;
+  cursor: pointer;
+}
+
+.elements__like_active{
+  background-color: black;
 }
 
 .elements__icon-like:hover{
   opacity: .6;
-  cursor: pointer;
-}
 
-.elements__icon-like:active{
-  background-color: black;
 }
 
 @media screen and (max-width: 900px) {
@@ -101,6 +101,4 @@
     white-space: nowrap;
     overflow: hidden;
   }
-
-
 }

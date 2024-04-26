@@ -6,7 +6,7 @@ const profileJob = document.querySelector(".profile__description");
 const inputName = document.querySelector(".popup__input-name");
 const inputJob = document.querySelector(".popup__input-job");
 const btnSave = document.querySelector(".popup__btn");
-
+const btnLike = document.querySelectorAll(".elements__icon-like");
 
 
 function openPopup(){
@@ -35,3 +35,10 @@ function saveInfo(evt){
 }
 
 btnSave.addEventListener("click", saveInfo);
+
+function likeActive() {
+  btnLike.classList.add('elements__like_active');
+}
+
+btnLike.addEventListener("click", likeActive);
+
