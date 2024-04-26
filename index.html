@@ -22,9 +22,7 @@
           <div class="profile__txt">
             <div class="profile__cont-edit">
               <h1 class="profile__name">Jacques Cousteau</h1>
-              <button class="profile__btn-edit">
-                <img src="images/icon-edit.svg" alt="Aquí hay un icono">
-              </button>
+              <img src="images/icon-edit.svg" alt="Aquí hay un icono" class="profile__icon-edit">
             </div>
             <p class="profile__description">Explorador</p>
           </div>
@@ -33,6 +31,15 @@
           <img src="images/icon-add.svg" alt="Aquí hay un icono">
         </button>
       </section>
+      <section class="popup">
+        <form action="" class="popup__form">
+          <img src="images/icon-close.svg" alt="Aquí hay un icono" class="popup__icon">
+          <h1 class="popup__header">Editar perfil</h1>
+          <input type="text" value="" placeholder="Nombre" class="popup__input-name">
+          <input type="text" value="" placeholder="Profesión" class="popup__input-job">
+          <button type="submit" class="popup__btn">Guardar</button>
+        </form>
+     </section>
       <section class="elements">
         <!-- elemento 1 -->
         <div class="elements__target">
@@ -89,13 +96,11 @@
           </div>
         </div>
       </section>
-      <section class="popup">
-
-      </section>
     </main>
     <footer class="footer">
       &#169;2024 Santiago Gutierrez
     </footer>
   </div>
+  <script src="scripts/index.js"></script>
 </body>
 </html>
