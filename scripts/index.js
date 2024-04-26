@@ -10,7 +10,7 @@ const btnLike = document.querySelectorAll(".elements__icon-like");
 
 
 function openPopup(){
-  inputsReset();
+  inputsShowInfo();
   popupProfile.classList.add("popup__show");
 }
 
@@ -22,9 +22,9 @@ function closePopup(){
 
 btnClose.addEventListener("click", closePopup);
 
-function inputsReset(){
-  inputName.value = "";
-  inputJob.value = "";
+function inputsShowInfo(){
+  inputName.value = profileName.textContent;
+  inputJob.value = profileJob.textContent;
 }
 
 function saveInfo(evt){
