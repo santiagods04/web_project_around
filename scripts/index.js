@@ -8,19 +8,18 @@ const inputJob = document.querySelector(".popup__input-job");
 const btnSave = document.querySelector(".popup__btn");
 const btnLike = document.querySelectorAll(".elements__icon-like");
 
+btnEdit.addEventListener("click", openPopup);
+btnClose.addEventListener("click", closePopup);
+btnSave.addEventListener("click", saveInfo);
 
 function openPopup(){
   inputsShowInfo();
   popupProfile.classList.add("popup__show");
 }
 
-btnEdit.addEventListener("click", openPopup);
-
 function closePopup(){
   popupProfile.classList.remove("popup__show");
 }
-
-btnClose.addEventListener("click", closePopup);
 
 function inputsShowInfo(){
   inputName.value = profileName.textContent;
@@ -34,11 +33,6 @@ function saveInfo(evt){
   closePopup();
 }
 
-btnSave.addEventListener("click", saveInfo);
 
-function likeActive() {
-  btnLike.classList.add('elements__like_active');
-}
 
-btnLike.addEventListener("click", likeActive);
 
