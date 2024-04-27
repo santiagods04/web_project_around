@@ -11,3 +11,7 @@ sección popup, esta es una sección que consiste de una ventana emergente al da
 sección elements, consta de una sección programada con display grid que muestra distintos lugares que se acomodan segun el tamaño de la pantalla
 
 sección footer, consta de una copyright con el nombre del autor de la página
+
+Link git hub pages
+
+https://santiagods04.github.io/web_project_around/
