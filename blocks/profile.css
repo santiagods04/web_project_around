@@ -19,6 +19,7 @@
 }
 
 .profile__cont-edit{
+  max-width: 415px;
   display: flex;
   align-items: center;
 }
@@ -27,6 +28,9 @@
   font-weight: 500;
   font-size: 42px;
   line-height: 56px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__icon-edit{
@@ -99,17 +103,22 @@
     flex-direction: column;
 
   }
+  .profile__cont-edit{
+    max-width: 282px;
+    display: flex;
+    justify-content: center;
+  }
+
 
   .profile__name{
     font-weight: 500;
     font-size: 22px;
     line-height: 26.63px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
-  .profile__cont-edit{
-    display: flex;
-    justify-content: center;
-  }
 
   .profile__txt{
     margin: auto;
