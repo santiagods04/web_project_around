@@ -15,6 +15,7 @@
 }
 
 .profile__txt{
+  max-width: 415px;
   margin-left: 30px;
 }
 
@@ -50,6 +51,9 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 21.78px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__btn-add{
@@ -70,6 +74,9 @@
     font-weight: 500;
     font-size: 32px;
     line-height: 46px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .profile__icon-edit{
@@ -103,6 +110,14 @@
     flex-direction: column;
 
   }
+
+  .profile__txt{
+    max-width: 282px;
+    margin: auto;
+    margin-top: 30px;
+    text-align: center;
+  }
+
   .profile__cont-edit{
     max-width: 282px;
     display: flex;
@@ -119,18 +134,14 @@
     overflow: hidden;
   }
 
-
-  .profile__txt{
-    margin: auto;
-    margin-top: 30px;
-    text-align: center;
-  }
-
   .profile__description{
     margin-top: 10px;
     font-weight: 400;
     font-size: 14px;
     line-height: 26.94px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .profile__btn-add{
