@@ -25,7 +25,7 @@
           <div class="profile__txt">
             <div class="profile__cont-edit">
               <h1 class="profile__name">Jacques Cousteau</h1>
-              <img src="images/icon-edit.svg" alt="Aquí hay un icono" class="profile__icon-edit">
+              <button class="profile__icon-edit"></button>
             </div>
             <p class="profile__description">Explorador</p>
           </div>
@@ -34,73 +34,39 @@
           <img src="images/icon-add.svg" alt="Aquí hay un icono">
         </button>
       </section>
-      <!-- section popup -->
-      <section class="popup">
-        <form class="popup__form">
-          <img src="images/icon-close.svg" alt="Aquí hay un icono" class="popup__icon">
+      <!-- section popup user -->
+      <section class="popupU">
+        <form class="popupU__form">
+          <img src="images/icon-close.svg" alt="Aquí hay un icono" class="popupU__icon">
           <h1 class="popup__header">Editar perfil</h1>
-          <input type="text" value="" placeholder="Nombre" class="popup__input-name">
-          <input type="text" value="" placeholder="Profesión" class="popup__input-job">
-          <button type="submit" class="popup__btn">Guardar</button>
+          <input type="text" value="" placeholder="Nombre" class="popupU__input-name">
+          <input type="text" value="" placeholder="Profesión" class="popupU__input-job">
+          <button type="submit" class="popupU__btn">Guardar</button>
         </form>
      </section>
+     <!-- section popup Site -->
+     <section class="popupS">
+      <form class="popupS__form">
+        <img src="images/icon-close.svg" alt="Aquí hay un icono" class="popupS__icon">
+        <h1 class="popup__header">Nuevo lugar</h1>
+        <input type="text" value="" placeholder="Título" class="popupS__input-title">
+        <input type="url" value="" placeholder="Enlace de la imagen" class="popupS__input-img">
+        <button type="submit" class="popupS__btn">Crear</button>
+      </form>
+   </section>
      <!-- section elements -->
-      <section class="elements">
-        <!-- elemento 1 -->
-        <div class="elements__target">
-          <img src="images/icon-delete.svg" alt="Aquí hay un icono" class="elements__icon-delete">
-          <img src="images/elem-image1.jpg" alt="Aquí hay una imagen" class="elements__image">
-          <div class="elements__txt-cont">
-            <h2 class="elements__txt">Valle de Yosemite</h2>
-            <img src="images/icon-like.svg" alt="Aquí hay un icono" class="elements__icon-like">
+      <section class="elements"></section>
+        <!-- elemento template -->
+        <template class="template-card">
+          <div class="elements__target">
+            <button class="elements__icon-delete"></button>
+            <img src="" alt="" class="elements__image">
+            <div class="elements__txt-cont">
+              <h2 class="elements__txt"></h2>
+              <button class="elements__icon-like"></button>
+            </div>
           </div>
-        </div>
-        <!-- elemento 2 -->
-        <div class="elements__target">
-          <img src="images/icon-delete.svg" alt="Aquí hay un icono" class="elements__icon-delete">
-          <img src="images/elem-image2.jpg" alt="Aquí hay una imagen" class="elements__image">
-          <div class="elements__txt-cont">
-            <h2 class="elements__txt">Lago Louise</h2>
-            <img src="images/icon-like.svg" alt="Aquí hay un icono" class="elements__icon-like">
-          </div>
-        </div>
-        <!-- elemento 3 -->
-        <div class="elements__target">
-          <img src="images/icon-delete.svg" alt="Aquí hay un icono" class="elements__icon-delete">
-          <img src="images/elem-image3.jpg" alt="Aquí hay una imagen" class="elements__image">
-          <div class="elements__txt-cont">
-            <h2 class="elements__txt">Montañas Calvas</h2>
-            <img src="images/icon-like.svg" alt="Aquí hay un icono" class="elements__icon-like">
-          </div>
-        </div>
-        <!-- elemento 4 -->
-        <div class="elements__target">
-          <img src="images/icon-delete.svg" alt="Aquí hay un icono" class="elements__icon-delete">
-          <img src="images/elem-image4.jpg" alt="Aquí hay una imagen" class="elements__image">
-          <div class="elements__txt-cont">
-            <h2 class="elements__txt">Latemar</h2>
-            <img src="images/icon-like.svg" alt="Aquí hay un icono" class="elements__icon-like">
-          </div>
-        </div>
-        <!-- elemento 5 -->
-        <div class="elements__target">
-          <img src="images/icon-delete.svg" alt="Aquí hay un icono" class="elements__icon-delete">
-          <img src="images/elem-image5.jpg" alt="Aquí hay una imagen" class="elements__image">
-          <div class="elements__txt-cont">
-            <h2 class="elements__txt">Vanoise National Extend</h2>
-            <img src="images/icon-like.svg" alt="Aquí hay un icono" class="elements__icon-like">
-          </div>
-        </div>
-        <!-- elemento 6 -->
-        <div class="elements__target">
-          <img src="images/icon-delete.svg" alt="Aquí hay un icono" class="elements__icon-delete">
-          <img src="images/elem-image6.jpg" alt="Aquí hay una imagen" class="elements__image">
-          <div class="elements__txt-cont">
-            <h2 class="elements__txt">Lago di Braies</h2>
-            <img src="images/icon-like.svg" alt="Aquí hay un icono" class="elements__icon-like">
-          </div>
-        </div>
-      </section>
+        </template>
     </main>
     <!-- footer -->
     <footer class="footer">

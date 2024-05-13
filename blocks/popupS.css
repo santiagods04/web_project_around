@@ -1,4 +1,4 @@
-.popup{
+.popupS{
   display: none;
   width: 100vw;
   height: 100vh;
@@ -11,11 +11,11 @@
   align-items: center;
 }
 
-.popup__show{
+.popupS__show{
   display: flex;
 }
 
-.popup__form{
+.popupS__form{
   width: 430px;
   display: flex;
   justify-content: center;
@@ -27,7 +27,7 @@
   position: relative;
 }
 
-.popup__icon{
+.popupS__icon{
   width: 40px;
   height: 40px;
   position: absolute;
@@ -36,17 +36,17 @@
   cursor: pointer;
 }
 
-.popup__icon:hover{
+.popupS__icon:hover{
   opacity: .6;
 }
 
-.popup__header{
+.popupS__header{
   font-weight: 900;
   font-size: 24px;
   line-height: 29.05px;
 }
 
-.popup__input-name{
+.popupS__input-title{
   margin-top: 54px;
   padding: 0 0 7px 0;
   font-weight: 400;
@@ -56,7 +56,7 @@
   border-bottom: 1px solid #545454;
 }
 
-.popup__input-job{
+.popupS__input-img{
   margin-top: 30px;
   padding: 0 0 7px 0;
   font-weight: 400;
@@ -66,7 +66,7 @@
   border-bottom: 1px solid #545454;
 }
 
-.popup__btn{
+.popupS__btn{
   background-color: black;
   color: white;
   margin-top: 48px;
@@ -77,13 +77,13 @@
   cursor: pointer;
 }
 
-.popup__btn:hover{
+.popupS__btn:hover{
   opacity: .8;
 }
 
 @media screen and (max-width: 500px) {
 
-  .popup__form{
+  .popupS__form{
     width: 282px;
     display: flex;
     justify-content: center;
@@ -95,7 +95,7 @@
     position: relative;
   }
 
-  .popup__icon{
+  .popupS__icon{
     width: 26px;
     height: 26px;
     position: absolute;

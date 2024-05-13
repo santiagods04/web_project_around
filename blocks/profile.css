@@ -35,9 +35,10 @@
 }
 
 .profile__icon-edit{
-  max-width: 24px;
-  max-height: 24px;
+  width: 24px;
+  height: 24px;
   background-color: black;
+  background-image: url(../images/icon-edit.svg);
   border: 0;
   margin-left: 19px;
   cursor: pointer;
