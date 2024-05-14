@@ -44,6 +44,7 @@ const initialCards = [
   }
 ];
 const template = document.querySelector(".template-card");
+const templateBigImg = document.querySelector(".template-big-card");
 
 //Botones popupU
 btnEdit.addEventListener("click", openPopupU);
