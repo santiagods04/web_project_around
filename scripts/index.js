@@ -106,12 +106,10 @@ function createCards(name, link){
 
 function newCard(evt) {
   evt.preventDefault();
-  const cardToAdd = function (elem) {
-    elem.name = inputTitle.textContent;
-    elem.link = inputImage.textContent;
-    createCards(elem.name, elem.link);
-  };
-  itemElements.prepend(cardToAdd);
+  const cardName = inputTitle.value;
+  const cardLink = inputImage.value;
+  const newCardElement = createCards(cardName, cardLink);
+  itemElements.prepend(newCardElement);
   closePopupS();
 }
 
