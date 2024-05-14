@@ -62,10 +62,13 @@
   width: 21px;
   height: 19px;
   border: none;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.elements__like_active{
-  background-color: black;
+.elements__icon-like_active{
+  background-image: none;
+  background-image: url(../images/icon-like-active.svg);
 }
 
 .elements__icon-like:hover{

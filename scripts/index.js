@@ -41,6 +41,7 @@ const initialCards = [
   }
 ];
 const template = document.querySelector(".template-card");
+const btnCreate = document.querySelector(".popupS__btn");
 
 //Botones popupU
 btnEdit.addEventListener("click", openPopupU);
@@ -49,6 +50,12 @@ btnSave.addEventListener("click", saveInfoU);
 //Botones popupS
 btnAdd.addEventListener("click", openPopupS);
 btnCloseS.addEventListener("click", closePopupS);
+//Botones elements
+btnCreate.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+  createCards();
+  closePopupS();
+});
 
 
 //Funcionamiento popupU
@@ -85,11 +92,21 @@ function createCards(name, link){
   const card = template.cloneNode(true).content.querySelector(".elements__target");
   const cardImage = card.querySelector(".elements__image");
   const cardTitle = card.querySelector(".elements__txt");
+  const btnDelete = card.querySelector(".elements__icon-delete");
+  const btnLike = card.querySelector(".elements__icon-like");
+  btnLike.addEventListener("click", function () {
+    btnLike.classList.toggle(".elements__icon-like_active");
+  });
+  btnDelete.addEventListener("click", function (){
+    card.remove();
+  });
   cardImage.src = link;
   cardImage.alr = name;
   cardTitle.textContent = name;
   itemElements.append(card);
 }
+
+
 
 initialCards.forEach(function (elem) {
   createCards(elem.name, elem.link);
