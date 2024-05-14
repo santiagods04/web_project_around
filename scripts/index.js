@@ -12,6 +12,9 @@ const btnSave = document.querySelector(".popupU__btn");
 //Variables PopupS
 const popupSite = document.querySelector(".popupS");
 const btnCloseS = document.querySelector(".popupS__icon");
+const inputTitle = document.querySelector(".popupS__input-title");
+const inputImage = document.querySelector(".popupS__input-img");
+const btnCreate = document.querySelector(".popupS__btn");
 //Variables elements cards
 const itemElements = document.querySelector(".elements");
 const initialCards = [
@@ -41,7 +44,6 @@ const initialCards = [
   }
 ];
 const template = document.querySelector(".template-card");
-const btnCreate = document.querySelector(".popupS__btn");
 
 //Botones popupU
 btnEdit.addEventListener("click", openPopupU);
@@ -51,11 +53,7 @@ btnSave.addEventListener("click", saveInfoU);
 btnAdd.addEventListener("click", openPopupS);
 btnCloseS.addEventListener("click", closePopupS);
 //Botones elements
-btnCreate.addEventListener("submit", function (evt) {
-  evt.preventDefault();
-  createCards();
-  closePopupS();
-});
+btnCreate.addEventListener("click", newCard);
 
 
 //Funcionamiento popupU
@@ -95,7 +93,7 @@ function createCards(name, link){
   const btnDelete = card.querySelector(".elements__icon-delete");
   const btnLike = card.querySelector(".elements__icon-like");
   btnLike.addEventListener("click", function () {
-    btnLike.classList.toggle(".elements__icon-like_active");
+    btnLike.classList.toggle("elements__icon-like_active");
   });
   btnDelete.addEventListener("click", function (){
     card.remove();
@@ -103,13 +101,24 @@ function createCards(name, link){
   cardImage.src = link;
   cardImage.alr = name;
   cardTitle.textContent = name;
-  itemElements.append(card);
+  return card;
+}
+
+function newCard(evt) {
+  evt.preventDefault();
+  const cardToAdd = function (elem) {
+    elem.name = inputTitle.textContent;
+    elem.link = inputImage.textContent;
+    createCards(elem.name, elem.link);
+  };
+  itemElements.prepend(cardToAdd);
+  closePopupS();
 }
 
 
-
 initialCards.forEach(function (elem) {
-  createCards(elem.name, elem.link);
+ const appendCards = createCards(elem.name, elem.link);
+ itemElements.append(appendCards);
 })
 
 

@@ -67,7 +67,6 @@
 }
 
 .elements__icon-like_active{
-  background-image: none;
   background-image: url(../images/icon-like-active.svg);
 }
 
