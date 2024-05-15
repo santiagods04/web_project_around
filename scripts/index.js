@@ -16,7 +16,6 @@ const inputTitle = document.querySelector(".popupS__input-title");
 const inputImage = document.querySelector(".popupS__input-img");
 const btnCreate = document.querySelector(".popupS__btn");
 //Variables elements cards
-const itemElements = document.querySelector(".elements");
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -43,8 +42,11 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
   }
 ];
+const itemElements = document.querySelector(".elements");
 const template = document.querySelector(".template-card");
-const templateBigImg = document.querySelector(".template-big-card");
+const popupImg = document.querySelector(".popup-bigcard");
+const btnCloseImg = document.querySelector(".popup-bigcard__icon");
+
 
 //Botones popupU
 btnEdit.addEventListener("click", openPopupU);
@@ -55,7 +57,7 @@ btnAdd.addEventListener("click", openPopupS);
 btnCloseS.addEventListener("click", closePopupS);
 //Botones elements
 btnCreate.addEventListener("click", newCard);
-
+btnCloseImg.addEventListener("click", closePopupImg);
 
 //Funcionamiento popupU
 function openPopupU(){
@@ -99,6 +101,9 @@ function createCards(name, link){
   btnDelete.addEventListener("click", function (){
     card.remove();
   });
+  cardImage.addEventListener("click", function (){
+    showPopupImg(name, link);
+  });
   cardImage.src = link;
   cardImage.alr = name;
   cardTitle.textContent = name;
@@ -119,5 +124,17 @@ initialCards.forEach(function (elem) {
  const appendCards = createCards(elem.name, elem.link);
  itemElements.append(appendCards);
 })
+
+function showPopupImg(name, link){
+  const img = document.querySelector(".popup-bigcard__img");
+  const title = document.querySelector(".popup-bigcard__description")
+  popupImg.classList.add("popup-bigcard__show");
+  img.src = link;
+  title.textContent = name;
+}
+
+function closePopupImg(){
+  popupImg.classList.remove("popup-bigcard__show");
+}
 
 
