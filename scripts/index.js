@@ -56,7 +56,7 @@ btnSave.addEventListener("click", saveInfoU);
 btnAdd.addEventListener("click", openPopupS);
 btnCloseS.addEventListener("click", closePopupS);
 //Botones elements
-btnCreate.addEventListener("click", newCard);
+btnCreate.addEventListener("click", createNewCard);
 btnCloseImg.addEventListener("click", closePopupImg);
 
 //Funcionamiento popupU
@@ -105,12 +105,12 @@ function createCards(name, link){
     showPopupImg(name, link);
   });
   cardImage.src = link;
-  cardImage.alr = name;
+  cardImage.alt = name;
   cardTitle.textContent = name;
   return card;
 }
 
-function newCard(evt) {
+function createNewCard(evt) {
   evt.preventDefault();
   const cardName = inputTitle.value;
   const cardLink = inputImage.value;
@@ -130,6 +130,7 @@ function showPopupImg(name, link){
   const title = document.querySelector(".popup-bigcard__description")
   popupImg.classList.add("popup-bigcard__show");
   img.src = link;
+  img.alt = name;
   title.textContent = name;
 }
 
