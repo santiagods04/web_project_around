@@ -66,6 +66,18 @@
   border-bottom: 1px solid #545454;
 }
 
+.popup__input_type_error{
+  border-bottom: 1px solid red;
+}
+
+.popup__error_visible{
+  margin-top: 5px;
+  color: red;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+}
+
 .popupU__btn{
   background-color: black;
   color: white;

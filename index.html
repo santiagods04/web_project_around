@@ -34,22 +34,26 @@
       </section>
       <!-- section popup user -->
       <section class="popupU">
-        <form class="popupU__form">
+        <form class="popupU__form popup__form">
           <img src="images/icon-close.svg" alt="Aquí hay un icono" class="popupU__icon">
           <h1 class="popupU__header">Editar perfil</h1>
-          <input type="text" value="" placeholder="Nombre" class="popupU__input-name">
-          <input type="text" value="" placeholder="Profesión" class="popupU__input-job">
-          <button type="submit" class="popupU__btn">Guardar</button>
+          <input type="text" value="" placeholder="Nombre" class="popupU__input-name popup__input" id="input-name" minlength="2" maxlength="40" required>
+          <span class="popup__error_visible input-name-error"></span>
+          <input type="text" value="" placeholder="Profesión" class="popupU__input-job popup__input" id="input-job" minlength="2" maxlength="200" required>
+          <span class="popup__error_visible input-job-error"></span>
+          <button type="submit" class="popupU__btn popup__button">Guardar</button>
         </form>
      </section>
      <!-- section popup Site -->
      <section class="popupS">
-      <form class="popupS__form">
+      <form class="popupS__form popup__form">
         <img src="images/icon-close.svg" alt="Aquí hay un icono" class="popupS__icon">
         <h1 class="popupS__header">Nuevo lugar</h1>
-        <input type="text" value="" placeholder="Título" class="popupS__input-title">
-        <input type="url" value="" placeholder="Enlace de la imagen" class="popupS__input-img">
-        <button class="popupS__btn">Crear</button>
+        <input type="text" value="" placeholder="Título" class="popupS__input-title popup__input" id="input-title" minlength="2" maxlength="30" required>
+        <span class="popup__error_visible input-title-error"></span>
+        <input type="url" value="" placeholder="Enlace de la imagen" class="popupS__input-img popup__input" id="input-url" required>
+        <span class="popup__error_visible input-url-error"></span>
+        <button class="popupS__btn popup__button">Crear</button>
       </form>
     </section>
      <!-- section elements -->
@@ -80,5 +84,6 @@
     </footer>
   </div>
   <script src="scripts/index.js"></script>
+  <script src="scripts/validate.js"></script>
 </body>
 </html>

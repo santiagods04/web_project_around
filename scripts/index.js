@@ -48,30 +48,34 @@ const popupImg = document.querySelector(".popup-bigcard");
 const btnCloseImg = document.querySelector(".popup-bigcard__icon");
 
 
-//Botones popupU
+//Eventos popupU
 btnEdit.addEventListener("click", openPopupU);
 btnCloseU.addEventListener("click", closePopupU);
 btnSave.addEventListener("click", saveInfoU);
-//Botones popupS
+popupProfile.addEventListener("click", (event) => {
+  if (!event.target.closest(".popupU__show")) {
+    closePopupU();
+  }
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closePopupU();
+  }
+});
+//Eventos popupS
 btnAdd.addEventListener("click", openPopupS);
 btnCloseS.addEventListener("click", closePopupS);
-//Botones elements
+//Eventos elements
 btnCreate.addEventListener("click", createNewCard);
 btnCloseImg.addEventListener("click", closePopupImg);
 
 //Funcionamiento popupU
 function openPopupU(){
-  inputsShowInfo();
   popupProfile.classList.add("popupU__show");
 }
 
 function closePopupU(){
   popupProfile.classList.remove("popupU__show");
-}
-
-function inputsShowInfo(){
-  inputName.value = profileName.textContent;
-  inputJob.value = profileJob.textContent;
 }
 
 function saveInfoU(evt){
