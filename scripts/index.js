@@ -15,7 +15,6 @@ const btnCloseS = document.querySelector(".popupS__icon");
 const inputTitle = document.querySelector(".popupS__input-title");
 const inputImage = document.querySelector(".popupS__input-img");
 const btnCreate = document.querySelector(".popupS__btn");
-//Variables elements cards
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -53,7 +52,7 @@ btnEdit.addEventListener("click", openPopupU);
 btnCloseU.addEventListener("click", closePopupU);
 btnSave.addEventListener("click", saveInfoU);
 popupProfile.addEventListener("click", (event) => {
-  if (!event.target.closest(".popupU__show")) {
+  if (event.target.className.includes("popup__main")) {
     closePopupU();
   }
 });
@@ -65,12 +64,23 @@ document.addEventListener("keydown", (event) => {
 //Eventos popupS
 btnAdd.addEventListener("click", openPopupS);
 btnCloseS.addEventListener("click", closePopupS);
-//Eventos elements
+popupSite.addEventListener("click", (event) => {
+  console.log(event.target.className)
+  if (event.target.className.includes("popup__main")) {
+    closePopupS();
+  }
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closePopupS();
+  }
+});
 btnCreate.addEventListener("click", createNewCard);
 btnCloseImg.addEventListener("click", closePopupImg);
 
 //Funcionamiento popupU
 function openPopupU(){
+  showInputsInfo()
   popupProfile.classList.add("popupU__show");
 }
 
@@ -83,6 +93,11 @@ function saveInfoU(evt){
   profileName.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
   closePopupU();
+}
+
+function showInputsInfo(){
+  inputName.value = profileName.textContent;
+  inputJob.value = profileJob.textContent;
 }
 //Funcionamiento popupS
 function openPopupS(){
