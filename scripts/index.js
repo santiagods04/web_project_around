@@ -99,6 +99,8 @@ function showInputsInfo(){
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
 }
+
+showInputsInfo();
 //Funcionamiento popupS
 function openPopupS(){
   popupSite.classList.add("popupS__show");
