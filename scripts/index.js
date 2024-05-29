@@ -103,6 +103,8 @@ function showInputsInfo(){
 showInputsInfo();
 //Funcionamiento popupS
 function openPopupS(){
+  inputTitle.value = "";
+  inputImage.value = "";
   popupSite.classList.add("popupS__show");
 }
 
