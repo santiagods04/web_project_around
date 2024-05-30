@@ -53,7 +53,7 @@ btnEdit.addEventListener("click", openPopupU);
 btnCloseU.addEventListener("click", closePopupU);
 btnSave.addEventListener("click", saveInfoU);
 popupProfile.addEventListener("click", (event) => {
-  if (event.target.id.includes("popupU")) {
+  if (event.target.id == "popupU") {
     closePopupU();
   }
 });
