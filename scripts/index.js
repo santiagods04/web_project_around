@@ -4,17 +4,18 @@ const btnEdit = document.querySelector(".profile__icon-edit");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__description");
 //Variables popupU
-const popupProfile = document.querySelector(".popupU");
-const btnCloseU = document.querySelector(".popupU__icon");
-const inputName = document.querySelector(".popupU__input-name");
-const inputJob = document.querySelector(".popupU__input-job");
-const btnSave = document.querySelector(".popupU__btn");
+const popupProfile = document.querySelector("#popupU");
+const btnCloseU = document.querySelector("#popupU__icon");
+const inputName = document.querySelector("#input-name");
+const inputJob = document.querySelector("#input-job");
+const btnSave = document.querySelector("#popupU__btn");
 //Variables PopupS
-const popupSite = document.querySelector(".popupS");
-const btnCloseS = document.querySelector(".popupS__icon");
-const inputTitle = document.querySelector(".popupS__input-title");
-const inputImage = document.querySelector(".popupS__input-img");
-const btnCreate = document.querySelector(".popupS__btn");
+const popupSite = document.querySelector("#popupS");
+const btnCloseS = document.querySelector("#popupS__icon");
+const inputTitle = document.querySelector("#input-title");
+const inputImage = document.querySelector("#input-url");
+const btnCreate = document.querySelector("#popupS__btn");
+//Var's elements
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -52,7 +53,7 @@ btnEdit.addEventListener("click", openPopupU);
 btnCloseU.addEventListener("click", closePopupU);
 btnSave.addEventListener("click", saveInfoU);
 popupProfile.addEventListener("click", (event) => {
-  if (event.target.className.includes("popup-main")) {
+  if (event.target.id.includes("popupU")) {
     closePopupU();
   }
 });
@@ -66,7 +67,7 @@ btnAdd.addEventListener("click", openPopupS);
 btnCloseS.addEventListener("click", closePopupS);
 popupSite.addEventListener("click", (event) => {
   console.log(event.target.className)
-  if (event.target.className.includes("popup-main")) {
+  if (event.target.id == "popupS") {
     closePopupS();
   }
 });
@@ -81,11 +82,11 @@ btnCloseImg.addEventListener("click", closePopupImg);
 //Funcionamiento popupU
 function openPopupU(){
   showInputsInfo()
-  popupProfile.classList.add("popupU__show");
+  popupProfile.classList.add("popup__show");
 }
 
 function closePopupU(){
-  popupProfile.classList.remove("popupU__show");
+  popupProfile.classList.remove("popup__show");
 }
 
 function saveInfoU(evt){
@@ -105,11 +106,11 @@ showInputsInfo();
 function openPopupS(){
   inputTitle.value = "";
   inputImage.value = "";
-  popupSite.classList.add("popupS__show");
+  popupSite.classList.add("popup__show");
 }
 
 function closePopupS(){
-  popupSite.classList.remove("popupS__show");
+  popupSite.classList.remove("popup__show");
 }
 //Funcionamiento elements
 function createCards(name, link){
