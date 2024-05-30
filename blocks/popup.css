@@ -61,7 +61,7 @@
   border-bottom: 1px solid red;
 }
 
-.popup__error_visible{
+.popup__error{
   margin-top: 5px;
   color: red;
   font-weight: 400;
