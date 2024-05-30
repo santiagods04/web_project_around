@@ -76,8 +76,19 @@ document.addEventListener("keydown", (event) => {
     closePopupS();
   }
 });
+//eventos elements
 btnCreate.addEventListener("click", createNewCard);
 btnCloseImg.addEventListener("click", closePopupImg);
+popupImg.addEventListener("click", (event) => {
+  if (event.target.id == "close-img") {
+    closePopupImg();
+  }
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closePopupImg();
+  }
+});
 
 //Funcionamiento popupU
 function openPopupU(){
