@@ -52,7 +52,7 @@ btnEdit.addEventListener("click", openPopupU);
 btnCloseU.addEventListener("click", closePopupU);
 btnSave.addEventListener("click", saveInfoU);
 popupProfile.addEventListener("click", (event) => {
-  if (event.target.className.includes("popup__main")) {
+  if (event.target.className.includes("popup-main")) {
     closePopupU();
   }
 });
@@ -66,7 +66,7 @@ btnAdd.addEventListener("click", openPopupS);
 btnCloseS.addEventListener("click", closePopupS);
 popupSite.addEventListener("click", (event) => {
   console.log(event.target.className)
-  if (event.target.className.includes("popup__main")) {
+  if (event.target.className.includes("popup-main")) {
     closePopupS();
   }
 });
