@@ -49,7 +49,9 @@ const btnCloseImg = document.querySelector(".popup-bigcard__icon");
 
 
 //Eventos popupU
-btnEdit.addEventListener("click", openPopupU);
+btnEdit.addEventListener("click", () => {
+  openPopup(popupProfile);
+});
 btnCloseU.addEventListener("click", closePopupU);
 btnSave.addEventListener("click", saveInfoU);
 popupProfile.addEventListener("click", (event) => {
@@ -91,9 +93,8 @@ document.addEventListener("keydown", (event) => {
 });
 
 //Funcionamiento popupU
-function openPopupU(){
-  showInputsInfo()
-  popupProfile.classList.add("popup__show");
+function openPopup(popup){
+  popup.classList.add("popup__show");
 }
 
 function closePopupU(){
