@@ -1,57 +1,66 @@
-const initialCards = [
-  {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
-  }
-];
-const itemElements = document.querySelector(".elements");
-const template = document.querySelector(".template-card");
-const popupImg = document.querySelector(".popup-bigcard");
-const btnCloseImg = document.querySelector(".popup-bigcard__icon");
+import { template, popupImg} from "./utils.js";
 
-class Card {
+export default class Card {
   constructor(name, link){
-    this.name = name;
-    this.link = link;
-    this.likes = 0;
-    this.card = this.generateCard();
-    this.likeButton = this.card.querySelector(".elements__icon-like");
+    this._name = name;
+    this._link = link;
+    this._card = this.getTemplate();
   }
 
-  generateCard(){
+  getTemplate(){
     return template.cloneNode(true).content.querySelector(".elements__target");
   }
 
-  handleLike(){
-    this.likeButton.classList.add(".elements__icon-like_active");
+  setProperties(){
+    this._cardImage = this._card.querySelector(".elements__image");
+    this._cardTitle = this._card.querySelector(".elements__txt");
+    this._btnDelete = this._card.querySelector(".elements__icon-delete");
+    this._btnLike = this._card.querySelector(".elements__icon-like");
+    this._cardImage.src = this._link;
+    this._cardTitle.textContent = this._name;
   }
 
-  deleteCard(){
-    this.card.remove();
+  showBigImg(){
+    this._img = popupImg.querySelector(".popup-bigcard__img");
+    this._title = popupImg.querySelector(".popup-bigcard__description");
+    this._closeImg = popupImg.querySelector(".popup-bigcard__icon");
+    popupImg.classList.add("popup-bigcard__show");
+    this._closeImg.addEventListener("click", () => {
+      popupImg.classList.remove("popup-bigcard__show");
+    });
+    popupImg.addEventListener("click", (evt) =>{
+      if (evt.target.id == "popup-big"){
+        popupImg.classList.remove("popup-bigcard__show");
+      }
+    })
+    document.addEventListener("keydown", (evt) =>{
+      if (evt.key == "Escape") {
+        popupImg.classList.remove("popup-bigcard__show");
+      }
+    })
+    this._img.src = this._link;
+    this._img.alt = this._name;
+    this._title.textContent = this._name;
+  }
+
+  setEventListeners(){
+    this._btnLike.addEventListener("click", () => {
+      this._btnLike.classList.toggle("elements__icon-like_active");
+    })
+
+    this._btnDelete.addEventListener("click", () => {
+      this._card.remove();
+    })
+
+    this._cardImage.addEventListener("click", () => {
+      this.showBigImg();
+    })
+  }
+
+  generateCard(){
+    this.setProperties();
+    this.setEventListeners();
+    return this._card;
   }
 }
 
-initialCards.forEach((element) => {
-  const initialCard = new Card(element.name, element.link);
-  console.log(initialCard);
-})
