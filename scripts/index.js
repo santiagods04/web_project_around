@@ -45,67 +45,61 @@ const initialCards = [
 const itemElements = document.querySelector(".elements");
 const template = document.querySelector(".template-card");
 const popupImg = document.querySelector(".popup-bigcard");
-const btnCloseImg = document.querySelector(".popup-bigcard__icon");
 
 
+//eventos popup´s en general
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closePopup(popupProfile);
+    closePopup(popupSite);
+  }
+});
 //Eventos popupU
 btnEdit.addEventListener("click", () => {
   openPopup(popupProfile);
 });
-btnCloseU.addEventListener("click", closePopupU);
+btnCloseU.addEventListener("click", () => {
+  closePopup(popupProfile);
+});
 btnSave.addEventListener("click", saveInfoU);
 popupProfile.addEventListener("click", (event) => {
   if (event.target.id == "popupU") {
-    closePopupU();
-  }
-});
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closePopupU();
-  }
-});
-//Eventos popupS
-btnAdd.addEventListener("click", openPopupS);
-btnCloseS.addEventListener("click", closePopupS);
-popupSite.addEventListener("click", (event) => {
-  console.log(event.target.className)
-  if (event.target.id == "popupS") {
-    closePopupS();
-  }
-});
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closePopupS();
-  }
-});
-//eventos elements
-btnCreate.addEventListener("click", createNewCard);
-btnCloseImg.addEventListener("click", closePopupImg);
-popupImg.addEventListener("click", (event) => {
-  if (event.target.id == "close-img") {
-    closePopupImg();
-  }
-});
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closePopupImg();
+    closePopup(popupProfile);
   }
 });
 
-//Funcionamiento popupU
+//Eventos popupS
+btnAdd.addEventListener("click", () => {
+  openPopup(popupSite);
+});
+btnCloseS.addEventListener("click", () => {
+  closePopup(popupSite);
+});
+popupSite.addEventListener("click", (event) => {
+  if (event.target.id == "popupS") {
+    closePopup(popupSite);
+  }
+});
+
+//eventos elements
+btnCreate.addEventListener("click", createNewCard);
+
+
+
+//Funcionamiento popup
 function openPopup(popup){
   popup.classList.add("popup__show");
 }
 
-function closePopupU(){
-  popupProfile.classList.remove("popup__show");
+function closePopup(popup){
+  popup.classList.remove("popup__show");
 }
-
+// funcionamiento popupU
 function saveInfoU(evt){
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
-  closePopupU();
+  closePopup(popupProfile);
 }
 
 function showInputsInfo(){
@@ -114,16 +108,15 @@ function showInputsInfo(){
 }
 
 showInputsInfo();
-//Funcionamiento popupS
-function openPopupS(){
-  inputTitle.value = "";
-  inputImage.value = "";
-  popupSite.classList.add("popup__show");
+
+//funcionamiento popupImg
+function openPopupImg() {
+  popupImg.classList.add("popup__show");
+}
+function closePopupImg(){
+
 }
 
-function closePopupS(){
-  popupSite.classList.remove("popup__show");
-}
 //Funcionamiento elements
 function createCards(name, link){
   const card = template.cloneNode(true).content.querySelector(".elements__target");
@@ -152,7 +145,7 @@ function createNewCard(evt) {
   const cardLink = inputImage.value;
   const newCardElement = createCards(cardName, cardLink);
   itemElements.prepend(newCardElement);
-  closePopupS();
+  closePopup(popupSite);
 }
 
 
@@ -163,15 +156,29 @@ initialCards.forEach(function (elem) {
 
 function showPopupImg(name, link){
   const img = document.querySelector(".popup-bigcard__img");
-  const title = document.querySelector(".popup-bigcard__description")
+  const title = document.querySelector(".popup-bigcard__description");
+  const btnCloseImg = document.querySelector(".popup-bigcard__icon");
   popupImg.classList.add("popup-bigcard__show");
+  btnCloseImg.addEventListener("click", () => {
+    popupImg.classList.remove("popup-bigcard__show");
+  });
+  popupImg.addEventListener("click", (event) => {
+  if (event.target.id == "close-img") {
+    popupImg.classList.remove("popup-bigcard__show");
+  }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      popupImg.classList.remove("popup-bigcard__show");
+    }
+  });
+
   img.src = link;
   img.alt = name;
   title.textContent = name;
 }
 
-function closePopupImg(){
-  popupImg.classList.remove("popup-bigcard__show");
-}
+
 
 
