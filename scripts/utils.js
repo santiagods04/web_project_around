@@ -8,13 +8,24 @@ export const popupProfile = document.querySelector("#popupU");
 export const btnCloseU = document.querySelector("#popupU__icon");
 export const inputName = document.querySelector("#input-name");
 export const inputJob = document.querySelector("#input-job");
+export const formProfile = document.querySelector("#popupU__form");
 export const btnSave = document.querySelector("#popupU__btn");
 //Var's PopupS
 export const popupSite = document.querySelector("#popupS");
 export const btnCloseS = document.querySelector("#popupS__icon");
 export const inputTitle = document.querySelector("#input-title");
 export const inputImage = document.querySelector("#input-url");
+export const formSite = document.querySelector("#popupS__form")
 export const btnCreate = document.querySelector("#popupS__btn");
+//Var's popup
+export const settings = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error"
+}
 //Var's elements
 export const initialCards = [
   {
@@ -45,4 +56,27 @@ export const initialCards = [
 export const itemElements = document.querySelector(".elements");
 export const template = document.querySelector(".template-card");
 export const popupImg = document.querySelector(".popup-bigcard");
+
+//Funcionamiento popup
+export function openPopup(popup){
+  popup.classList.add("popup__show");
+}
+
+export function closePopup(popup){
+  popup.classList.remove("popup__show");
+}
+
+// funcionamiento popupU
+export function saveInfoU(evt){
+  evt.preventDefault();
+  profileName.textContent = inputName.value;
+  profileJob.textContent = inputJob.value;
+  closePopup(popupProfile);
+}
+
+export function showInputsInfo(){
+  inputName.value = profileName.textContent;
+  inputJob.value = profileJob.textContent;
+}
+
 

@@ -1,12 +1,11 @@
 import {
   btnAdd,
   btnEdit,
-  profileName,
-  profileJob,
   popupProfile,
+  formProfile,
+  settings,
+  formSite,
   btnCloseU,
-  inputName,
-  inputJob,
   btnSave,
   popupSite,
   btnCloseS,
@@ -15,9 +14,20 @@ import {
   btnCreate,
   initialCards,
   itemElements,
+  openPopup,
+  closePopup,
+  saveInfoU,
+  showInputsInfo,
  } from "./utils.js";
 
  import Card from "./Card.js";
+ import FormValidator from "./FormValidator.js";
+
+ const profileValidation = new FormValidator(formProfile, settings);
+ const siteValidation = new FormValidator(formSite, settings);
+
+  profileValidation.enableValidation();
+  siteValidation.enableValidation();
 
 //eventos popup´s en general
 document.addEventListener("keydown", (event) => {
@@ -39,6 +49,8 @@ popupProfile.addEventListener("click", (event) => {
     closePopup(popupProfile);
   }
 });
+
+showInputsInfo();
 
 //Eventos popupS
 btnAdd.addEventListener("click", () => {
@@ -62,31 +74,6 @@ btnCreate.addEventListener("click", (evt) => {
   itemElements.prepend(newCardElement);
   closePopup(popupSite);
 });
-
-
-
-//Funcionamiento popup
-function openPopup(popup){
-  popup.classList.add("popup__show");
-}
-
-function closePopup(popup){
-  popup.classList.remove("popup__show");
-}
-// funcionamiento popupU
-function saveInfoU(evt){
-  evt.preventDefault();
-  profileName.textContent = inputName.value;
-  profileJob.textContent = inputJob.value;
-  closePopup(popupProfile);
-}
-
-function showInputsInfo(){
-  inputName.value = profileName.textContent;
-  inputJob.value = profileJob.textContent;
-}
-
-showInputsInfo();
 
 initialCards.forEach(function (elem) {
  const appendCards = new Card(elem.name, elem.link).generateCard();
