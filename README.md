@@ -14,7 +14,7 @@ sección footer, consta de una copyright con el nombre del autor de la página
 
 25 de mayo 2024 se añade validación de formularios y funciones para cerrar los formularios con la tecla "Esc" y dando click fuera del fomulario
 
-15 de Junio 2023 se optimiza la funcionalidad e validación de formularios y crear cartas con clases independientes usando Programación oriendata a objetos.
+15 de Junio 2024 se optimiza la funcionalidad e validación de formularios y crear cartas con clases independientes usando Programación oriendata a objetos.
 
 Link git hub pages
 
