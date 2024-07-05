@@ -4,7 +4,7 @@ export const btnEdit = document.querySelector(".profile__icon-edit");
 export const profileName = document.querySelector(".profile__name");
 export const profileJob = document.querySelector(".profile__description");
 //Var's popupU
-export const popupProfile = document.querySelector("#popupU");
+export const popupUser = document.querySelector("#popupU");
 export const btnCloseU = document.querySelector("#popupU__icon");
 export const inputName = document.querySelector("#input-name");
 export const inputJob = document.querySelector("#input-job");
@@ -71,7 +71,7 @@ export function saveInfoU(evt){
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
-  closePopup(popupProfile);
+  popupProfile.close();
 }
 
 export function showInputsInfo(){

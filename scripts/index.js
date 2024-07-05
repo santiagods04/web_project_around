@@ -1,8 +1,8 @@
 import {
   btnAdd,
   btnEdit,
-  popupProfile,
   formProfile,
+  popupUser,
   settings,
   formSite,
   btnCloseU,
@@ -22,32 +22,29 @@ import {
 
  import Card from "./Card.js";
  import FormValidator from "./FormValidator.js";
+ import Popup from "./Popup.js";
 
  const profileValidation = new FormValidator(formProfile, settings);
  const siteValidation = new FormValidator(formSite, settings);
+ const popupProfile = new Popup("#popupU");
 
   profileValidation.enableValidation();
   siteValidation.enableValidation();
 
 //eventos popup´s en general
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closePopup(popupProfile);
-    closePopup(popupSite);
-  }
+document.addEventListener("keydown", (evt) => {
+  popupProfile.closeEsc(evt);
 });
 //Eventos popupU
 btnEdit.addEventListener("click", () => {
-  openPopup(popupProfile);
+  popupProfile.open();
 });
 btnCloseU.addEventListener("click", () => {
-  closePopup(popupProfile);
+  popupProfile.close();
 });
 btnSave.addEventListener("click", saveInfoU);
-popupProfile.addEventListener("click", (event) => {
-  if (event.target.id == "popupU") {
-    closePopup(popupProfile);
-  }
+popupUser.addEventListener("click", (evt) => {
+  popupProfile.closeOutside(evt);
 });
 
 showInputsInfo();
