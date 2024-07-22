@@ -17,7 +17,7 @@ import {
 
  import Card from "./Card.js";
  import FormValidator from "./FormValidator.js";
- import PopupWithForm from "./PopupWithiForm.js";
+ import PopupWithForm from "./PopupWithForm.js";
 
  const profileValidation = new FormValidator(formProfile, settings);
  const siteValidation = new FormValidator(formSite, settings);
