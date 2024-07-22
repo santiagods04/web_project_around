@@ -9,14 +9,12 @@ export const btnCloseU = document.querySelector("#popupU__icon");
 export const inputName = document.querySelector("#input-name");
 export const inputJob = document.querySelector("#input-job");
 export const formProfile = document.querySelector("#popupU__form");
-export const btnSave = document.querySelector("#popupU__btn");
 //Var's PopupS
 export const popupSite = document.querySelector("#popupS");
 export const btnCloseS = document.querySelector("#popupS__icon");
 export const inputTitle = document.querySelector("#input-title");
 export const inputImage = document.querySelector("#input-url");
 export const formSite = document.querySelector("#popupS__form")
-export const btnCreate = document.querySelector("#popupS__btn");
 //Var's popup
 export const settings = {
   formSelector: ".popup__form",
@@ -67,12 +65,6 @@ export function closePopup(popup){
 }
 
 // funcionamiento popupU
-export function saveInfoU(evt){
-  evt.preventDefault();
-  profileName.textContent = inputName.value;
-  profileJob.textContent = inputJob.value;
-  popupProfile.close();
-}
 
 export function showInputsInfo(){
   inputName.value = profileName.textContent;

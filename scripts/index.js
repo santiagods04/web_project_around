@@ -1,39 +1,45 @@
 import {
-  btnAdd,
-  btnEdit,
-  formProfile,
-  popupUser,
-  settings,
-  formSite,
-  btnCloseU,
-  btnSave,
-  popupSite,
-  btnCloseS,
-  inputTitle,
-  inputImage,
-  btnCreate,
   initialCards,
   itemElements,
-  openPopup,
-  closePopup,
-  saveInfoU,
+  btnAdd,
+  btnEdit,
+  popupUser,
+  formProfile,
+  profileName,
+  profileJob,
+  popupSite,
+  formSite,
+  settings,
+  btnCloseU,
+  btnCloseS,
   showInputsInfo,
  } from "./utils.js";
 
  import Card from "./Card.js";
  import FormValidator from "./FormValidator.js";
- import Popup from "./Popup.js";
+ import PopupWithForm from "./PopupWithiForm.js";
 
  const profileValidation = new FormValidator(formProfile, settings);
  const siteValidation = new FormValidator(formSite, settings);
- const popupProfile = new Popup("#popupU");
+ const popupProfile = new PopupWithForm("#popupU", (inputs) => {
+  profileName.textContent = inputs.name;
+  profileJob.textContent = inputs.job;
+ });
+ const popupCards = new PopupWithForm("#popupS" , (inputs) => {
+  const newCardElement = new Card(inputs.title, inputs.link).generateCard();
+  itemElements.prepend(newCardElement);
+ });
 
-  profileValidation.enableValidation();
-  siteValidation.enableValidation();
+ popupProfile.setEventListeners();
+ popupCards.setEventListeners();
+
+ profileValidation.enableValidation();
+ siteValidation.enableValidation();
 
 //eventos popup´s en general
 document.addEventListener("keydown", (evt) => {
   popupProfile.closeEsc(evt);
+  popupCards.closeEsc(evt);
 });
 //Eventos popupU
 btnEdit.addEventListener("click", () => {
@@ -42,7 +48,6 @@ btnEdit.addEventListener("click", () => {
 btnCloseU.addEventListener("click", () => {
   popupProfile.close();
 });
-btnSave.addEventListener("click", saveInfoU);
 popupUser.addEventListener("click", (evt) => {
   popupProfile.closeOutside(evt);
 });
@@ -51,25 +56,13 @@ showInputsInfo();
 
 //Eventos popupS
 btnAdd.addEventListener("click", () => {
-  openPopup(popupSite);
+  popupCards.open();
 });
 btnCloseS.addEventListener("click", () => {
-  closePopup(popupSite);
+  popupCards.close();
 });
-popupSite.addEventListener("click", (event) => {
-  if (event.target.id == "popupS") {
-    closePopup(popupSite);
-  }
-});
-
-//eventos elements
-btnCreate.addEventListener("click", (evt) => {
-  evt.preventDefault();
-  const cardName = inputTitle.value;
-  const cardLink = inputImage.value;
-  const newCardElement = new Card(cardName, cardLink).generateCard();
-  itemElements.prepend(newCardElement);
-  closePopup(popupSite);
+popupSite.addEventListener("click", (evt) => {
+  popupCards.closeOutside(evt);
 });
 
 initialCards.forEach(function (elem) {
