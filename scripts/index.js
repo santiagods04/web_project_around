@@ -1,74 +1,63 @@
 import {
   initialCards,
-  itemElements,
   btnAdd,
   btnEdit,
-  popupUser,
   formProfile,
-  profileName,
-  profileJob,
-  popupSite,
   formSite,
   settings,
-  btnCloseU,
-  btnCloseS,
-  showInputsInfo,
  } from "./utils.js";
 
  import Card from "./Card.js";
  import FormValidator from "./FormValidator.js";
  import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
+import Section from "./Section.js";
+import UserInfo from "./UserInfo.js";
+
 
  const profileValidation = new FormValidator(formProfile, settings);
  const siteValidation = new FormValidator(formSite, settings);
  const popupProfile = new PopupWithForm("#popupU", (inputs) => {
-  profileName.textContent = inputs.name;
-  profileJob.textContent = inputs.job;
+  infoUser.setUserInfo({name: inputs.name, job: inputs.job});
  });
+
+ const popupWithImg = new PopupWithImage("#popup-big");
+
+ const infoUser = new UserInfo({name: ".profile__name", job: ".profile__description"});
+
+ popupWithImg.setEventListeners()
+
+ const sectionElements = new Section({items:initialCards, renderer:(item) =>{
+  const card = new Card(item.name, item.link, () =>{
+    popupWithImg.open(item.name, item.link);
+  }).generateCard();
+  sectionElements.addItem(card);
+ }}, ".elements");
+
+ sectionElements.renderer();
+
  const popupCards = new PopupWithForm("#popupS" , (inputs) => {
-  const newCardElement = new Card(inputs.title, inputs.link).generateCard();
-  itemElements.prepend(newCardElement);
+  const newCardElement = new Card(inputs.title, inputs.link, () =>{
+    popupWithImg.open(inputs.title, inputs.link);
+  }).generateCard();
+  sectionElements.addCard(newCardElement);
  });
 
  popupProfile.setEventListeners();
  popupCards.setEventListeners();
 
- profileValidation.enableValidation();
- siteValidation.enableValidation();
-
-//eventos popup´s en general
-document.addEventListener("keydown", (evt) => {
-  popupProfile.closeEsc(evt);
-  popupCards.closeEsc(evt);
-});
 //Eventos popupU
 btnEdit.addEventListener("click", () => {
   popupProfile.open();
+  profileValidation.enableValidation();
 });
-btnCloseU.addEventListener("click", () => {
-  popupProfile.close();
-});
-popupUser.addEventListener("click", (evt) => {
-  popupProfile.closeOutside(evt);
-});
-
-showInputsInfo();
 
 //Eventos popupS
 btnAdd.addEventListener("click", () => {
   popupCards.open();
-});
-btnCloseS.addEventListener("click", () => {
-  popupCards.close();
-});
-popupSite.addEventListener("click", (evt) => {
-  popupCards.closeOutside(evt);
+  siteValidation.enableValidation();
 });
 
-initialCards.forEach(function (elem) {
- const appendCards = new Card(elem.name, elem.link).generateCard();
- itemElements.append(appendCards);
-})
 
 
 
