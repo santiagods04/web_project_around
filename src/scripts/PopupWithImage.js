@@ -12,7 +12,4 @@ export default class PopupWithImage extends Popup {
     this._img.src = link;
     this._title.textContent = name;
   }
-
-  
-
 }
