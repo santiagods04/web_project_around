@@ -1,6 +1,6 @@
 # Tripleten web_project_around
 
-Esta proyecto simula una pagina de perfil de usuario en donde se muestran los datos del usuario como su nombre y su profesión, mostrando los lugares que ha visitado, el desarrollo de la misma consta de 5 secciones, para la programación de esta pagina se uso figma, html, css, javaScript y mediaqueries para diferentes tamaños de pantalla.
+Esta proyecto simula una pagina de perfil de usuario en donde se muestran los datos del usuario como su nombre y su profesión, mostrando los lugares que ha visitado, el desarrollo de la misma consta de 5 secciones, para la programación de esta pagina se uso figma, html, css, javaScript y diseños responsive para diferentes tamaños de pantalla.
 
 sección header, consta de un logo proporcionado por el figma, organizado con margenes y dislay flex
 

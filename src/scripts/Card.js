@@ -1,11 +1,13 @@
 import {template} from "./utils.js";
 
 export default class Card {
-  constructor(name, link, handleClick){
+  constructor(name, link, handleClick, handlelike, handleDelete){
     this._name = name;
     this._link = link;
     this._card = this.getTemplate();
     this._handleClick = handleClick;
+    this._handleLike = handlelike;
+    this._handleDelete = handleDelete;
   }
 
   getTemplate(){
@@ -22,11 +24,11 @@ export default class Card {
   }
   setEventListeners(){
     this._btnLike.addEventListener("click", () => {
-      this._btnLike.classList.toggle("elements__icon-like_active");
+      this._handleLike()
     })
 
     this._btnDelete.addEventListener("click", () => {
-      this._card.remove();
+      this._handleDelete()
     })
 
     this._cardImage.addEventListener("click", () => {
