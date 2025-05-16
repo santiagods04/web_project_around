@@ -64,6 +64,11 @@ popupCards.setEventListeners();
 
 //Eventos popupU
 btnEdit.addEventListener("click", () => {
+  const currentData = infoUser.showActualInfo()
+  popupProfile.setInputValues({
+    name: currentData.name,
+    job: currentData.job
+  })
   popupProfile.open();
   profileValidation.enableValidation();
 });

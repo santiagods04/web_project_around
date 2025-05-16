@@ -5,7 +5,7 @@ export default class UserInfo {
     this._avatarUser = document.querySelector(avatar);
   }
 
-  getUserInfo() {
+  showActualInfo() {
     return {
       name: this._nameUser.textContent,
       job: this._jobUser.textContent,

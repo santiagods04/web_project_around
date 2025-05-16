@@ -20,4 +20,14 @@ export default class Api {
     .then(this._checkResponse)
     .catch(err => console.log(err));
   }
+
+  getInitialCards(){
+    return fetch(this._url,{
+      headers: {
+        authorization: this._token, 'Content-Type': 'application/json'
+      }
+    })
+    .then(this._checkResponse)
+    .catch(err => console.log(err));
+  }
 }
