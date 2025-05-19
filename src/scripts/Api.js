@@ -18,7 +18,7 @@ export default class Api {
       }
     })
     .then(this._checkResponse)
-    .catch(err => console.log(err));
+    .catch(err => console.log('Error al cargar el usuario:', err));
   }
 
   getInitialCards(){
@@ -28,6 +28,6 @@ export default class Api {
       }
     })
     .then(this._checkResponse)
-    .catch(err => console.log(err));
+    .catch(err => console.log('Error al cargar tarjetas:', err));
   }
 }
