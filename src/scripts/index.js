@@ -15,17 +15,12 @@ import Section from "./Section.js";
 import UserInfo from "./UserInfo.js";
 import Api from "./Api.js";
 
-const apiUser = new Api("https://around-api.es.tripleten-services.com/v1/users/me", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
+const apiGetUser = new Api("https://around-api.es.tripleten-services.com/v1/users/me", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
 const apiInitCards = new Api("https://around-api.es.tripleten-services.com/v1/cards/", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
+const apiUpdateUser = new Api("https://around-api.es.tripleten-services.com/v1/users/me", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
 const profileValidation = new FormValidator(formProfile, settings);
 const siteValidation = new FormValidator(formSite, settings);
-const popupProfile = new PopupWithForm("#popupU", (inputs) => {
 
-    infoUser.setUserInfo({
-      name: inputs.name,
-      job: inputs.job
-    });
-});
 const popupWithImg = new PopupWithImage("#popup-big");
 const infoUser = new UserInfo({
   name: ".profile__name",
@@ -33,7 +28,7 @@ const infoUser = new UserInfo({
   avatar: ".profile__image"
 });
 
-apiUser.getInfoUser()
+apiGetUser.getInfoUser()
 .then(user => {
   infoUser.setUserInfo({
     name: user.name,
@@ -41,6 +36,19 @@ apiUser.getInfoUser()
     avatar: user.avatar
   })
 })
+
+const popupProfile = new PopupWithForm("#popupU", (inputs) => {
+  apiUpdateUser.updateUserInfo({
+    name:   inputs.name,
+    job:  inputs.job
+  })
+  .then(updatedData => {
+    infoUser.setUserInfo({
+      name: updatedData.name,
+      job: updatedData.about
+    });
+  })
+});
 
 apiInitCards.getInitialCards()
   .then(cards => {

@@ -30,4 +30,18 @@ export default class Api {
     .then(this._checkResponse)
     .catch(err => console.log('Error al cargar tarjetas:', err));
   }
+
+  updateUserInfo({name, job}){
+    return fetch(this._url,{
+      method: 'PATCH',
+      headers: {
+        authorization: this._token, 'Content-Type': 'application/json'
+      },
+       body: JSON.stringify({
+        name: name,
+        about: job})
+    })
+    .then(this._checkResponse)
+    .catch(err => console.log('Error al actualizar usuario:', err));
+  }
 }
