@@ -44,4 +44,19 @@ export default class Api {
     .then(this._checkResponse)
     .catch(err => console.log('Error al actualizar usuario:', err));
   }
+
+  newCard({name, link}){
+    return fetch(this._url,{
+      method: 'POST',
+      headers: {
+        authorization: this._token, 'Content-Type': 'application/json'
+      },
+       body: JSON.stringify({
+        name: name,
+        link: link
+      })
+    })
+    .then(this._checkResponse)
+    .catch(err => console.log('Error al actualizar usuario:', err));
+  }
 }

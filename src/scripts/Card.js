@@ -24,11 +24,13 @@ export default class Card {
   }
   setEventListeners(){
     this._btnLike.addEventListener("click", () => {
-      this._handleLike()
+      //this._handleLike();
+      this._btnLike.classList.toggle("elements__icon-like_active");
     })
 
     this._btnDelete.addEventListener("click", () => {
-      this._handleDelete()
+      //this._handleDelete();
+      this._btnDelete.remove(this._card);
     })
 
     this._cardImage.addEventListener("click", () => {

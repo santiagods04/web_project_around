@@ -18,6 +18,7 @@ import Api from "./Api.js";
 const apiGetUser = new Api("https://around-api.es.tripleten-services.com/v1/users/me", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
 const apiInitCards = new Api("https://around-api.es.tripleten-services.com/v1/cards/", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
 const apiUpdateUser = new Api("https://around-api.es.tripleten-services.com/v1/users/me", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
+const apiAddCard = new Api("https://around-api.es.tripleten-services.com/v1/cards/", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
 const profileValidation = new FormValidator(formProfile, settings);
 const siteValidation = new FormValidator(formSite, settings);
 
@@ -55,11 +56,7 @@ apiInitCards.getInitialCards()
     const sectionElements = new Section({
       items: cards,
       renderer: (item) => {
-        const card = new Card(
-          item.name,
-          item.link,
-          () => popupWithImg.open(item.name, item.link)
-        ).generateCard();
+        const card = new Card(item.name, item.link, () => popupWithImg.open(item.name, item.link)).generateCard();
         sectionElements.addItem(card);
       }
     }, '.elements');
@@ -68,10 +65,16 @@ apiInitCards.getInitialCards()
 popupWithImg.setEventListeners()
 
 const popupCards = new PopupWithForm("#popupS" , (inputs) => {
-const newCardElement = new Card(inputs.title, inputs.link, () =>{
-  popupWithImg.open(inputs.title, inputs.link);
-}).generateCard();
-sectionElements.addCard(newCardElement);
+  apiAddCard.newCard({
+    name: inputs.title,
+    link: inputs.link
+  })
+  .then(card => {
+    const sectionElements = new Section("", '.elements')
+    const newCardElement = new Card(inputs.title, inputs.link, () =>{popupWithImg.open(inputs.link, inputs.link);}).generateCard();
+    sectionElements.addCard(newCardElement);
+  })
+
 });
 
 popupProfile.setEventListeners();
