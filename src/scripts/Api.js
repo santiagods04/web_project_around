@@ -70,4 +70,15 @@ export default class Api {
     .then(this._checkResponse)
     .catch(err => console.log('Error al gestionar like:', err));
   }
+
+  handleDeleteCard(cardId){
+    return fetch(`${this._url}/cards/${cardId}`,{
+      method: 'DELETE',
+      headers: {
+        authorization: this._token, 'Content-Type': 'application/json'
+      }
+    })
+    .then(this._checkResponse)
+    .catch(err => console.log('Error al eliminar tarjeta:', err));
+  }
 }

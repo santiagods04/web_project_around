@@ -27,7 +27,6 @@ export default class Card {
   }
   setEventListeners(){
     this._btnLike.addEventListener("click", () => {
-      console.log(this._isLiked);
       this._handleLike(this._id, this._isLiked)
          .then(updatedCard => {
             this._isLiked = updatedCard.isLiked;
@@ -37,8 +36,7 @@ export default class Card {
     })
 
     this._btnDelete.addEventListener("click", () => {
-      //this._handleDelete();
-      this._btnDelete.remove(this._card);
+      this._handleDelete();
     })
 
     this._cardImage.addEventListener("click", () => {
