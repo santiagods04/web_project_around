@@ -12,7 +12,7 @@ export default class Api {
   }
 
   getInfoUser(){
-    return fetch(this._url,{
+    return fetch(`${this._url}/users/me`,{
       headers: {
         authorization: this._token, 'Content-Type': 'application/json'
       }
@@ -22,7 +22,7 @@ export default class Api {
   }
 
   getInitialCards(){
-    return fetch(this._url,{
+    return fetch(`${this._url}/cards/`,{
       headers: {
         authorization: this._token, 'Content-Type': 'application/json'
       }
@@ -32,7 +32,7 @@ export default class Api {
   }
 
   updateUserInfo({name, job}){
-    return fetch(this._url,{
+    return fetch(`${this._url}/users/me`,{
       method: 'PATCH',
       headers: {
         authorization: this._token, 'Content-Type': 'application/json'
@@ -46,17 +46,28 @@ export default class Api {
   }
 
   newCard({name, link}){
-    return fetch(this._url,{
+    return fetch(`${this._url}/cards/`,{
       method: 'POST',
       headers: {
         authorization: this._token, 'Content-Type': 'application/json'
       },
-       body: JSON.stringify({
+      body: JSON.stringify({
         name: name,
         link: link
       })
     })
     .then(this._checkResponse)
     .catch(err => console.log('Error al actualizar usuario:', err));
+  }
+
+  handleLikeCard(cardId, isLiked){
+    return fetch(`${this._url}/cards/${cardId}/likes`,{
+      method: isLiked ? "DELETE" : "PUT",
+      headers: {
+        authorization: this._token, 'Content-Type': 'application/json'
+      }
+    })
+    .then(this._checkResponse)
+    .catch(err => console.log('Error al gestionar like:', err));
   }
 }

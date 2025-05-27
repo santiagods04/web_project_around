@@ -1,12 +1,11 @@
 import "../pages/index.css";
 import {
-  initialCards,
   btnAdd,
   btnEdit,
   formProfile,
   formSite,
   settings,
- } from "./utils.js";
+} from "./utils.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import PopupWithForm from "./PopupWithForm.js";
@@ -15,10 +14,7 @@ import Section from "./Section.js";
 import UserInfo from "./UserInfo.js";
 import Api from "./Api.js";
 
-const apiGetUser = new Api("https://around-api.es.tripleten-services.com/v1/users/me", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
-const apiInitCards = new Api("https://around-api.es.tripleten-services.com/v1/cards/", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
-const apiUpdateUser = new Api("https://around-api.es.tripleten-services.com/v1/users/me", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
-const apiAddCard = new Api("https://around-api.es.tripleten-services.com/v1/cards/", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
+const api = new Api("https://around-api.es.tripleten-services.com/v1", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
 const profileValidation = new FormValidator(formProfile, settings);
 const siteValidation = new FormValidator(formSite, settings);
 
@@ -29,7 +25,7 @@ const infoUser = new UserInfo({
   avatar: ".profile__image"
 });
 
-apiGetUser.getInfoUser()
+api.getInfoUser()
 .then(user => {
   infoUser.setUserInfo({
     name: user.name,
@@ -39,7 +35,7 @@ apiGetUser.getInfoUser()
 })
 
 const popupProfile = new PopupWithForm("#popupU", (inputs) => {
-  apiUpdateUser.updateUserInfo({
+  api.updateUserInfo({
     name:   inputs.name,
     job:  inputs.job
   })
@@ -51,12 +47,14 @@ const popupProfile = new PopupWithForm("#popupU", (inputs) => {
   })
 });
 
-apiInitCards.getInitialCards()
+api.getInitialCards()
   .then(cards => {
     const sectionElements = new Section({
       items: cards,
       renderer: (item) => {
-        const card = new Card(item.name, item.link, () => popupWithImg.open(item.name, item.link)).generateCard();
+        const card = new Card(item._id, item.isLiked, item.name, item.link, () => popupWithImg.open(item.name, item.link), (id, isLiked) => {
+          return api.handleLikeCard(id, isLiked)
+        }).generateCard();
         sectionElements.addItem(card);
       }
     }, '.elements');
@@ -65,7 +63,7 @@ apiInitCards.getInitialCards()
 popupWithImg.setEventListeners()
 
 const popupCards = new PopupWithForm("#popupS" , (inputs) => {
-  apiAddCard.newCard({
+  api.newCard({
     name: inputs.title,
     link: inputs.link
   })
