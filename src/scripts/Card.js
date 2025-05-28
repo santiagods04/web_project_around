@@ -30,7 +30,6 @@ export default class Card {
       this._handleLike(this._id, this._isLiked)
          .then(updatedCard => {
             this._isLiked = updatedCard.isLiked;
-            console.log(updatedCard);
             this._btnLike.classList.toggle("elements__icon-like_active", this._isLiked);
          })
     })
@@ -44,6 +43,10 @@ export default class Card {
     })
   }
 
+  removeCard() {
+  this._card.remove();
+  }
+  
   generateCard(){
     this.setProperties();
     this.setEventListeners();

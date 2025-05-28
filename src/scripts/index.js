@@ -15,6 +15,7 @@ import UserInfo from "./UserInfo.js";
 import Api from "./Api.js";
 import PopupWithConfirmation from "./PopupWithConfirmation.js";
 
+let sectionElements;
 const api = new Api("https://around-api.es.tripleten-services.com/v1", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
 const profileValidation = new FormValidator(formProfile, settings);
 const siteValidation = new FormValidator(formSite, settings);
@@ -47,41 +48,56 @@ const popupProfile = new PopupWithForm("#popupU", (inputs) => {
     });
   })
 });
+function createCard(item) {
+  const card = new Card(
+    item._id,
+    item.isLiked,
+    item.name,
+    item.link,
+    () => popupWithImg.open(item.name, item.link),
+    (id, isLiked) => api.handleLikeCard(id, isLiked),
+    () => {
+      popupConfirmation.setSubmitAction(() => {
+        api.handleDeleteCard(item._id)
+          .then((res) => {
+            card.removeCard();
+            popupConfirmation.close();
+          });
+      });
+      popupConfirmation.open();
+    }
+  );
+  return card.generateCard();
+}
 
 api.getInitialCards()
   .then(cards => {
-    const sectionElements = new Section({
+    sectionElements = new Section({
       items: cards,
       renderer: (item) => {
-        const card = new Card(item._id, item.isLiked, item.name, item.link, () => popupWithImg.open(item.name, item.link),
-        (id, isLiked) => {return api.handleLikeCard(id, isLiked)}, () => {
-          popupConfirmation.open();
-          popupConfirmation.setSubmitAction(() => {
-            api.handleDeleteCard(item._id)
-              .then((res) => {
-                card.remove();
-                popupConfirmation.close();
-              })
-          });
-        }).generateCard();
+        const card = createCard(item);
         sectionElements.addItem(card);
       }
     }, '.elements');
     sectionElements.renderer();
-  })
+  });
 popupWithImg.setEventListeners()
 
-const popupCards = new PopupWithForm("#popupS" , (inputs) => {
+const popupCards = new PopupWithForm("#popupS", (inputs) => {
   api.newCard({
     name: inputs.title,
     link: inputs.link
   })
   .then(card => {
-    const sectionElements = new Section("", '.elements')
-    const newCardElement = new Card(inputs.title, inputs.link, () =>{popupWithImg.open(inputs.link, inputs.link);}).generateCard();
+    // Usa los datos devueltos por la API
+    const newCardElement = createCard({
+      _id: card._id,
+      isLiked: card.isLiked,
+      name: inputs.title,
+      link: inputs.link
+    });
     sectionElements.addCard(newCardElement);
-  })
-
+  });
 });
 
 popupProfile.setEventListeners();
