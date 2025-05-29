@@ -4,7 +4,9 @@ import {
   btnEdit,
   formProfile,
   formSite,
+  formAvatar,
   settings,
+  btnAvatar,
 } from "./utils.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
@@ -19,6 +21,7 @@ let sectionElements;
 const api = new Api("https://around-api.es.tripleten-services.com/v1", "28175fc1-f081-4f3f-9a2f-2da0605eb1a7");
 const profileValidation = new FormValidator(formProfile, settings);
 const siteValidation = new FormValidator(formSite, settings);
+const avatarValidation = new FormValidator(formAvatar, settings);
 const popupConfirmation = new PopupWithConfirmation("#popup-confirm");
 const popupWithImg = new PopupWithImage("#popup-big");
 const infoUser = new UserInfo({
@@ -34,6 +37,7 @@ api.getInfoUser()
     job: user.about,
     avatar: user.avatar
   })
+  console.log('Usuario cargado correctamente:', user);
 })
 
 const popupProfile = new PopupWithForm("#popupU", (inputs) => {
@@ -89,7 +93,6 @@ const popupCards = new PopupWithForm("#popupS", (inputs) => {
     link: inputs.link
   })
   .then(card => {
-    // Usa los datos devueltos por la API
     const newCardElement = createCard({
       _id: card._id,
       isLiked: card.isLiked,
@@ -103,6 +106,29 @@ const popupCards = new PopupWithForm("#popupS", (inputs) => {
 popupProfile.setEventListeners();
 popupCards.setEventListeners();
 
+
+
+const popupAvatar = new PopupWithForm("#popupA", (inputs) => {
+  api.updateAvatar(inputs.avatar)
+  .then((data) => {
+    infoUser.setUserInfo({
+      name: data.name,
+      job: data.about,
+      avatar: data.avatar
+    });
+  });
+});
+popupAvatar.setEventListeners();
+
+//Eventos avatar
+btnAvatar.addEventListener("click", () => {
+  const currentData = infoUser.showActualInfo();
+  popupAvatar.setInputValues({
+    avatar: currentData.avatar
+  });
+  popupAvatar.open();
+  avatarValidation.enableValidation();
+});
 //Eventos popupU
 btnEdit.addEventListener("click", () => {
   const currentData = infoUser.showActualInfo()

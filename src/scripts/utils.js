@@ -1,6 +1,9 @@
 //Var's user
 export const btnAdd = document.querySelector(".profile__btn-add")
 export const btnEdit = document.querySelector(".profile__icon-edit");
+export const btnAvatar = document.querySelector('.profile__image-container');
+// Var's popupA
+export const formAvatar = document.querySelector("#popupA__form");
 //Var's popupU
 export const formProfile = document.querySelector("#popupU__form");
 //Var's PopupS

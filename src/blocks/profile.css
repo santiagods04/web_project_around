@@ -8,6 +8,13 @@
   display: flex;
   align-items: center;
 }
+
+.profile__image-container {
+  position: relative;
+  display: inline-block;
+  max-width: 168px;
+  max-height: 127px;
+}
 .profile__image{
   max-width: 168px;
   max-height: 127px;
@@ -15,6 +22,35 @@
   aspect-ratio: 1;
   object-fit: cover;
 }
+
+.profile__image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  border-radius: 50%;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.profile__image-container:hover .profile__image-overlay {
+  opacity: 0.9;
+  pointer-events: auto;
+  cursor : pointer;
+}
+
+.profile__image-pencil {
+  width: 26px;
+  height: 26px;
+  filter: drop-shadow(0 0 2px #000);
+}
+
 
 .profile__txt{
   max-width: 415px;
