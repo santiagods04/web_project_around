@@ -37,11 +37,11 @@ api.getInfoUser()
     job: user.about,
     avatar: user.avatar
   })
-  console.log('Usuario cargado correctamente:', user);
 })
 
 const popupProfile = new PopupWithForm("#popupU", (inputs) => {
-  api.updateUserInfo({
+  api.renderLoading(true, "#popupU__btn");
+  return api.updateUserInfo({
     name:   inputs.name,
     job:  inputs.job
   })
@@ -50,6 +50,7 @@ const popupProfile = new PopupWithForm("#popupU", (inputs) => {
       name: updatedData.name,
       job: updatedData.about
     });
+    api.renderLoading(false, "#popupU__btn");
   })
 });
 function createCard(item) {
@@ -88,7 +89,8 @@ api.getInitialCards()
 popupWithImg.setEventListeners()
 
 const popupCards = new PopupWithForm("#popupS", (inputs) => {
-  api.newCard({
+  api.renderLoading(true, "#popupS__btn");
+  return api.newCard({
     name: inputs.title,
     link: inputs.link
   })
@@ -100,6 +102,7 @@ const popupCards = new PopupWithForm("#popupS", (inputs) => {
       link: inputs.link
     });
     sectionElements.addCard(newCardElement);
+    api.renderLoading(false, "#popupS__btn");
   });
 });
 
@@ -109,13 +112,15 @@ popupCards.setEventListeners();
 
 
 const popupAvatar = new PopupWithForm("#popupA", (inputs) => {
-  api.updateAvatar(inputs.avatar)
+  api.renderLoading(true, "#popupA__btn");
+  return api.updateAvatar(inputs.avatar)
   .then((data) => {
     infoUser.setUserInfo({
       name: data.name,
       job: data.about,
       avatar: data.avatar
     });
+    api.renderLoading(false, "#popupA__btn");
   });
 });
 popupAvatar.setEventListeners();

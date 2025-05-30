@@ -11,6 +11,19 @@ export default class Api {
     return Promise.reject(`Error ${res.status}`);
   }
 
+  renderLoading(isLoading, buttonSelector) {
+    const button = document.querySelector(buttonSelector);
+    if (isLoading && button.id === "popupS__btn") {
+      button.textContent = "Creando...";
+    } else if (isLoading) {
+      button.textContent = "Guardando...";
+    } else if (button.id === "popupS__btn") {
+      button.textContent = "Crear";
+    } else {
+      button.textContent = "Guardar";
+    }
+  }
+
   getInfoUser(){
     return fetch(`${this._url}/users/me`,{
       headers: {
@@ -42,7 +55,7 @@ export default class Api {
         about: job})
     })
     .then(this._checkResponse)
-    .catch(err => console.log('Error al actualizar usuario:', err));
+    .catch(err => console.log('Error al actualizar usuario:', err))
   }
 
   newCard({name, link}){
@@ -57,7 +70,7 @@ export default class Api {
       })
     })
     .then(this._checkResponse)
-    .catch(err => console.log('Error al actualizar usuario:', err));
+    .catch(err => console.log('Error al actualizar usuario:', err))
   }
 
   handleLikeCard(cardId, isLiked){
@@ -93,6 +106,6 @@ export default class Api {
       })
     })
     .then(this._checkResponse)
-    .catch(err => console.log('Error al actualizar avatar:', err));
+    .catch(err => console.log('Error al actualizar avatar:', err))
   }
 }
