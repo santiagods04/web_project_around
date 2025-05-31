@@ -6,13 +6,14 @@
   <meta name="description" content="Galeria sprint 6 TripleTen" />
   <meta name="author" content="Santiago Gutierrez" />
   <meta name="keywords" content="Arte, Imagenes, información" />
+  <link rel="stylesheet" href="pages/index.css">
   <title>Document</title>
 </head>
 <body>
   <div class="page">
     <!-- header -->
     <header class="header">
-      <img src="<%=require('./images/logo.svg')%>" alt="Aquí hay un logo" class="header__logo">
+      <img src="./images/logo.svg" alt="Aquí hay un logo" class="header__logo">
     </header>
     <!-- content main -->
     <main class="main">
@@ -22,7 +23,7 @@
           <div class="profile__image-container">
             <img src="" alt="Aquí hay una imagen" class="profile__image">
             <div class="profile__image-overlay">
-              <img src="<%=require('./images/icon-edit-a.svg')%>" alt="Editar avatar" class="profile__image-pencil">
+              <img src="./images/icon-edit-a.svg" alt="Editar avatar" class="profile__image-pencil">
             </div>
           </div>
           <div class="profile__txt">
@@ -38,7 +39,7 @@
       <!-- section popup user -->
       <section class="popup" id="popupU">
         <form class="popup__form" id="popupU__form" required>
-          <img src="<%=require('./images/icon-close.svg')%>" alt="Aquí hay un icono" class="popup__icon" id="popupU__icon">
+          <img src="./images/icon-close.svg" alt="Aquí hay un icono" class="popup__icon" id="popupU__icon">
           <h1 class="popup__header" id="popupU__header">Editar perfil</h1>
           <input type="text" value="" placeholder="Nombre" class="popup__input" id="input-name" name="name" minlength="2" maxlength="40" required>
           <span class="popup__error" id="input-name-error"></span>
@@ -50,7 +51,7 @@
      <!-- section popup Site -->
      <section class="popup" id="popupS">
       <form class="popup__form" id="popupS__form" required>
-        <img src="<%=require('./images/icon-close.svg')%>" alt="Aquí hay un icono" class="popup__icon" id="popupS__icon">
+        <img src="./images/icon-close.svg" alt="Aquí hay un icono" class="popup__icon" id="popupS__icon">
         <h1 class="popup__header" id="popupS__header">Nuevo lugar</h1>
         <input type="text" value="" placeholder="Título" class="popup__input" id="input-title" name="title" minlength="2" maxlength="30" required>
         <span class="popup__error" id="input-title-error"></span>
@@ -75,7 +76,7 @@
       <!-- section popup BigImg -->
       <section class="popup-bigcard" id="popup-big">
         <div class="popup-bigcard__container">
-          <img src="<%=require('./images/icon-close.svg')%>" alt="Aquí hay un icono" class="popup__icon popup-bigcard__icon">
+          <img src="./images/icon-close.svg" alt="Aquí hay un icono" class="popup__icon popup-bigcard__icon">
           <img src=" " alt=" " class="popup-bigcard__img">
           <h1 class="popup-bigcard__description"></h1>
         </div>
@@ -83,7 +84,7 @@
       <!-- section popup confirm -->
       <section class="popup" id="popup-confirm">
         <div class="popup__form" id="popup-confirm__content">
-          <img src="<%=require('./images/icon-close.svg')%>" alt="Aquí hay un icono" class="popup__icon" id="popup-confirm__icon">
+          <img src="./images/icon-close.svg" alt="Aquí hay un icono" class="popup__icon" id="popup-confirm__icon">
           <h1 class="popup__header" id="popup-confirm__header">¿Estás seguro/a?</h1>
           <button class="popup__button" id="popup-confirm__btn">Si</button>
         </div>
@@ -91,7 +92,7 @@
       <!-- section popup edit avatar -->
       <section class="popup" id="popupA">
         <form class="popup__form" id="popupA__form" required>
-          <img src="<%=require('./images/icon-close.svg')%>" alt="Aquí hay un icono" class="popup__icon" id="popupA__icon">
+          <img src="./images/icon-close.svg" alt="Aquí hay un icono" class="popup__icon" id="popupA__icon">
           <h1 class="popup__header" id="popupA__header">Cambiar foto de perfil</h1>
           <input type="url" value="" placeholder="Enlace de la imagen" class="popup__input" id="input-url-avatar" name="avatar" required>
           <span class="popup__error" id="input-url-avatar-error"></span>
@@ -105,6 +106,6 @@
     </footer>
   </div>
 
-  <!-- <script src="scripts/index.js" type="module"></script> -->
+  <script src="scripts/index.js" type="module"></script>
 </body>
 </html>
